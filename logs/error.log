@@ -1,0 +1,1 @@
+2026/04/26 00:08:38 [emerg] 11078#0: the duplicate "limit_conn_status" variable in ./conf/nginx.conf:17
