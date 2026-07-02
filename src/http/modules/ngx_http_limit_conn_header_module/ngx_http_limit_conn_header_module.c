@@ -61,7 +61,7 @@ static ngx_conf_enum_t  ngx_http_limit_conn_log_levels[] = {
     { ngx_string("notice"), NGX_LOG_NOTICE },
     { ngx_string("warn"), NGX_LOG_WARN },
     { ngx_string("error"), NGX_LOG_ERR },
-    { ng_null_string, 0 }
+    { ngx_null_string, 0 }
 };
 
 /* Boundaries ensuring the configured HTTP status code falls within standard error ranges */
@@ -78,26 +78,26 @@ static ngx_command_t  ngx_http_limit_conn_header_commands[] = {
       0, 0, NULL },
     // Activates connection limiting in a block: limit_conn_by_header
     { ngx_string("limit_conn_by_header"),
-      NGX_HTTP_MAIN_CONF|NG_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_TAKE2,
+      NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_TAKE2,
       ngx_http_limit_conn_header,
       NGX_HTTP_LOC_CONF_OFFSET, 0, NULL },
     // Sets custom log level on breach
     { ngx_string("limit_conn_header_log_level"),
-      NGX_HTTP_MAIN_CONF|NG_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_TAKE1,
+      NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_TAKE1,
       ngx_conf_set_enum_slot,
       NGX_HTTP_LOC_CONF_OFFSET,
       offsetof(ngx_http_limit_conn_conf_t, log_level),
       &ngx_http_limit_conn_log_levels },
     // Sets custom HTTP status code on breach
     { ngx_string("limit_conn_header_status_code"),
-      NGX_HTTP_MAIN_CONF|NG_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_TAKE1,
+      NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_TAKE1,
       ngx_conf_set_num_slot,
       NGX_HTTP_LOC_CONF_OFFSET,
       offsetof(ngx_http_limit_conn_conf_t, status_code),
       &ngx_http_limit_conn_status_bounds },
     // Toggles dry run mode
     { ngx_string("limit_conn_header_dry_run"),
-      NGX_HTTP_MAIN_CONF|NG_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_FLAG,
+      NGX_HTTP_MAIN_CONF|NGX_HTTP_SRV_CONF|NGX_HTTP_LOC_CONF|NGX_CONF_FLAG,
       ngx_conf_set_flag_slot,
       NGX_HTTP_LOC_CONF_OFFSET,
       offsetof(ngx_http_limit_conn_conf_t, dry_run),
