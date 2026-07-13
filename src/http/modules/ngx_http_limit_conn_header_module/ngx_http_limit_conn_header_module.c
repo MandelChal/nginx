@@ -196,7 +196,7 @@ ngx_http_limit_conn_header_handler(ngx_http_request_t *r)
             lc = (ngx_http_limit_conn_node_t *) &node->color;
             
             /* Enforce connection blocking threshold limits */
-            if ((ngx_uint_t) lc->conn >= limits[i].conn) { 
+            if ((ngx_uint_t) lc->conn >= limits[i].conn) {
                 ngx_log_error(NGX_LOG_ERR, r->connection->log, 0, "MICHAL_LOG: Key [%V] EXCEEDED limit! Blocking request. Current: %ui, Max Allowed: %ui", &key, (ngx_uint_t) lc->conn, limits[i].conn);
                 ngx_shmtx_unlock(&ctx->shpool->mutex); 
                 return lccf->status_code; 
