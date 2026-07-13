@@ -1,7 +1,7 @@
 # Defines the official and internal name of our module for the NGINX build process
 ngx_addon_name=ngx_http_limit_conn_header_module
 
-# Adds our module to the list שof existing HTTP modules.
+# Adds our module to the list of existing HTTP modules.
 # This tells NGINX that this module handles web requests (HTTP context).
 HTTP_MODULES="$HTTP_MODULES ngx_http_limit_conn_header_module"
 
